@@ -1,0 +1,2 @@
+[console_scripts]
+reptest = reputation_tool.main:main
