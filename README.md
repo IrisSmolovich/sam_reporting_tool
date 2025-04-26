@@ -1,13 +1,15 @@
 
 # **Reputation Stress Test Tool**
 
-A CLI tool desgined to perform stress tests on a reputation service by sending concurrent API requests.
+A CLI tool designed to perform stress tests on a reputation service by sending concurrent API requests.
 
 ## 📥 Installation 
 
 #### Clone the repo and navigate to the relevant folder
-`git clone sam_reporting_tool`
-`cd SAMReputationTool`
+```bash
+git clone sam_reporting_tool
+cd SAMReputationTool
+```
 
 #### Install the package locally
 `pip install -e`
@@ -21,9 +23,11 @@ A CLI tool desgined to perform stress tests on a reputation service by sending c
 
 cli_stress_tool [options]
 
-#### Exmaple:
-`reptest --parallel-requests <number> --domains-num <number> --timeout <seconds> --log-level <level>`
-`reptest --parallel-requests 1000 --domains-num 50 --timeout 30 --log-level INFO`
+#### Example:
+```bash
+reptest --parallel-requests <number> --domains-num <number> --timeout <seconds> --log-level <level>
+reptest --parallel-requests 1000 --domains-num 50 --timeout 30 --log-level INF
+```
 
 ## 📄 Command Options
 
