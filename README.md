@@ -8,7 +8,7 @@ A CLI tool designed to perform stress tests on a reputation service by sending c
 #### Clone the repo and navigate to the relevant folder
 ```bash
 git clone sam_reporting_tool
-cd SAMReputationTool
+cd sam_reporting_tool
 ```
 
 #### Install the package locally
