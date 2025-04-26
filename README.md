@@ -12,7 +12,7 @@ cd sam_reporting_tool
 ```
 
 #### Install the package locally
-`pip install -e`
+`pip install -e .`
 
 #### Make sure you have .env file locally with: 
 `API_TOKEN=value`
@@ -21,7 +21,7 @@ cd sam_reporting_tool
 
 #### Run the following command:
 
-cli_stress_tool [options]
+reptest [options]
 
 #### Example:
 ```bash

@@ -24,7 +24,7 @@ class ReportingClass:
         print("Test has finished!")
         print(f"Unique total tested domains: {len(self.execution)}")
         print(f"Total requests: {self.raw_results["total_requests"]}")
-        print(f"Successful requests: {self.raw_results["total_requests"]}-{self.raw_results["failed_requests"]}")
+        print(f"Successful requests: {self.raw_results["total_requests"]-self.raw_results["failed_requests"]}")
         print(f"Failed requests: {self.raw_results["failed_requests"]}")
         print(f"Failed percentage: {self.raw_results["error_rate"]:.2f}%")
         print(f"Average time: {self.raw_results["avg"]:.4f}s")

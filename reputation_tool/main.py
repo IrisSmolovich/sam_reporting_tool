@@ -21,6 +21,7 @@ def main():
     parser.add_argument("--log-level", type=str, default="INFO", help="Choose desired logging level")
     args = parser.parse_args()
 
+    execution = []
     api_token = get_api_token()
 
     if args.domains_file is None:
@@ -34,10 +35,11 @@ def main():
     session_timestamp = datetime.now().strftime("%d_%m_%Y_%H.%M.%S")
 
     domains_ranking = RankingClass(api_token, domains, args.url, time_stamp=session_timestamp, level=args.log_level)
-    execution = domains_ranking.run(args.parallel_requests, args.timeout, args.domains_num)
-
-    raw_results = domains_ranking.get_test_results()
-    domains_ranking.close()
+    try:
+        execution = domains_ranking.run(args.parallel_requests, args.timeout, args.domains_num)
+    finally:
+        raw_results = domains_ranking.get_test_results()
+        domains_ranking.close()
 
     reporter = ReportingClass(raw_results, execution)
     reporter.print_results()

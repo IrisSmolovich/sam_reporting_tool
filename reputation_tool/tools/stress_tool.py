@@ -1,4 +1,3 @@
-
 import random
 import statistics
 from pathlib import Path
@@ -12,6 +11,7 @@ class RankingClass:
     """
     class that handled ranking of domains per given parameters
     """
+
     def __init__(self, api_token, domains, url, time_stamp, level="INFO"):
         log_dir = Path(__file__).resolve().parent.parent / "logs"
         self.logger = logger.logger_init(log_dir=log_dir, level=level, time_stamp=time_stamp)
@@ -45,9 +45,10 @@ class RankingClass:
             data = response.json()
             if data.get("address") == "null":
                 self.logger.error(f"Invalid address 'null' returned for {domain}")
+                raise AssertionError(f"Invalid address 'null' returned for {domain}")
             return data
         except requests.RequestException as e:
-            raise AssertionError(f"Request exception for {domain}: {e}")
+            self.logger.error(f"Request exception for {domain}: {e}")
 
     def run(self, threads=10, timeout=30, max_domains=5000) -> list:
         """
@@ -64,7 +65,7 @@ class RankingClass:
             while not self.stop_event.is_set():
                 current_time = time.time()
                 if current_time > end_time:
-                    self.logger.error("Timeout has reached. Tests will stop")
+                    self.logger.info("Timeout has reached. Tests will stop")
                     break
                 with self.lock:
                     if len(tested_domains) < max_domains:
@@ -93,17 +94,28 @@ class RankingClass:
                 finally:
                     with self.lock:
                         self.total_requests += 1
-                        set(tested_domains)
 
-        threads_list = [threading.Thread(target=_thread_task) for _ in range(threads)]
-        for t in threads_list:
-            t.start()
+        threads_list = []
+        try:
+            for _ in range(threads):
+                t = threading.Thread(target=_thread_task)
+                t.start()
+                threads_list.append(t)
 
-        for t in threads_list:
-            t.join()
-        self.stop_event.set()
-        self.logger.info("Execution was completed")
-        return tested_domains
+            for t in threads_list:
+                t.join()
+        except KeyboardInterrupt:
+            print("KeyboardInterrupt detected! Handling a graceful shutdown")
+            self.logger.warning("KeyboardInterrupt detected! Handling a graceful shutdown")
+            self.stop_event.set()
+            for t in threads_list:
+                t.join()
+        finally:
+            self.stop_event.set()
+            self.logger.info("Execution was completed")
+            tested_domains = list(set(tested_domains))
+            self.logger.debug(f"Domains that were tested are: {tested_domains}")
+            return tested_domains
 
     def get_test_results(self) -> dict:
         """
@@ -129,4 +141,3 @@ class RankingClass:
     def close(self):
         """use close_logger() to verify logging has finished after the test"""
         self.logger.remove()
-

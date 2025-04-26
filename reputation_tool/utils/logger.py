@@ -23,8 +23,6 @@ def logger_init(log_dir="logs", level="INFO", time_stamp=None):
         format=custom_format,
         level=level,
         enqueue=True,
-        backtrace=True,
-        diagnose=True,
     )
 
     return logger
