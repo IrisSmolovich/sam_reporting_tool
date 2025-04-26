@@ -26,7 +26,7 @@ cli_stress_tool [options]
 #### Example:
 ```bash
 reptest --parallel-requests <number> --domains-num <number> --timeout <seconds> --log-level <level>
-reptest --parallel-requests 1000 --domains-num 50 --timeout 30 --log-level INF
+reptest --parallel-requests 1000 --domains-num 50 --timeout 30 --log-level INFO
 ```
 
 ## 📄 Command Options
