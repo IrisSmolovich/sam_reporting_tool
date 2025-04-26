@@ -3,7 +3,7 @@
 
 A CLI tool designed to perform stress tests on a reputation service by sending concurrent API requests.
 
-## 📥 Installation 
+## Installation 
 
 #### Clone the repo and navigate to the relevant folder
 ```bash
@@ -14,10 +14,10 @@ cd sam_reporting_tool
 #### Install the package locally
 `pip install -e`
 
-#### Make sure you have .env file locally that with: 
+#### Make sure you have .env file locally with: 
 `API_TOKEN=value`
 
-## 🚀 How to trigger a test
+## How to trigger a test
 
 #### Run the following command:
 
@@ -29,7 +29,7 @@ reptest --parallel-requests <number> --domains-num <number> --timeout <seconds> 
 reptest --parallel-requests 1000 --domains-num 50 --timeout 30 --log-level INFO
 ```
 
-## 📄 Command Options
+## Command Options
 
 - **`--parallel-requests`**: Number of concurrent API calls.  
   **Default Value**: `1`
