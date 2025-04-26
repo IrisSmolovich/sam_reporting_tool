@@ -1,16 +1,46 @@
-
-Reputation Stress Test Tool
-
+⭐ Reputation Stress Test Tool
 A CLI tool to perform stress testing on a reputation service by sending concurrent API requests.
 
-git clone sam_reporting_tool
+📥 Installation
+Clone the repository:
+
+bash
+Copy
+Edit
+git clone <your_repo_url>
 cd SAMReputationTool
+Install the package locally (editable mode):
 
-Install the package locally
-pip install -e
+bash
+Copy
+Edit
+pip install -e .
+🚀 How to Run a Stress Test
+Use the reptest command with the following options:
 
-How to trigger a test
+bash
+Copy
+Edit
 reptest --parallel-requests <number> --domains-num <number> --timeout <seconds> --log-level <level>
-exmaple:
+Example:
+bash
+Copy
+Edit
 reptest --parallel-requests 1000 --domains-num 50 --timeout 30 --log-level INFO
+--parallel-requests: Number of concurrent requests to send.
 
+--domains-num: Total number of different domains to test.
+
+--timeout: Maximum duration of the test in seconds.
+
+--log-level: Logging level (DEBUG, INFO, WARNING, ERROR).
+
+📂 Output
+Logs and test results will be saved automatically in the logs/ folder.
+
+After completion, logs and results are compressed into a .zip file.
+
+🛠️ Requirements
+Python 3.8+
+
+Dependencies listed in requirements.txt
