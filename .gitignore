@@ -5,3 +5,6 @@ logs/
 # Ignore environment variable files
 .env
 *.env
+
+# Ignore metadata about project
+*.egg-info/
