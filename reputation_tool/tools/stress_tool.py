@@ -64,7 +64,7 @@ class RankingClass:
             while not self.stop_event.is_set():
                 current_time = time.time()
                 if current_time > end_time:
-                    self.logger.error("Timeout has reached. Tests will stop")  # TODO: replace with logger.error
+                    self.logger.error("Timeout has reached. Tests will stop")
                     break
                 with self.lock:
                     if len(tested_domains) < max_domains:
