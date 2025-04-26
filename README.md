@@ -27,12 +27,20 @@ cli_stress_tool [options]
 
 ## 📄 Command Options
 
-| Option                | Description                                     | Default Value                                                                       |
-|------------------- ---|-------------------------------------------------|-------------------------------------------------------------------------------------|
-| `--parallel-requests` | Number of concurrent API calls                  | 1                                                                                   |
-| `--domains-num`       | Total number of domains to test                 | 1000                                                                                |
-| `--timeout`           | Total test duration (in seconds)                | 30                                                                                  |
-| `--domains-file`      | Directory to list of domains to be tested       | `domains.yaml`                                                                      |
-| `--url`               | Alternative URL to send API requests to         | `https://microcks.gin.dev.securingsam.io/rest/Reputation+API/1.0.0/domain/ranking/` |
-| `--log-level`         | Logging level (INFO, DEBUG, ERROR)              | `INFO`                                                                              |
+- **`--parallel-requests`**: Number of concurrent API calls.  
+  **Default Value**: `1`
 
+- **`--domains-num`**: Total number of domains to test.  
+  **Default Value**: `1000`
+
+- **`--timeout`**: Total test duration (in seconds).  
+  **Default Value**: `30`
+
+- **`--domains-file`**: Directory to list of domains to be tested.  
+  **Default Value**: `domains.yaml`
+
+- **`--url`**: URL to send API requests to.  
+  **Default Value**: `https://microcks.gin.dev.securingsam.io/rest/Reputation+API/1.0.0/domain/ranking/`
+
+- **`--log-level`**: Logging level (INFO, DEBUG, ERROR).  
+  **Default Value**: `INFO`
